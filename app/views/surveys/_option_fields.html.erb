@@ -1,0 +1,16 @@
+<div class="option_fields">
+    <div class="row">
+        <div class="input-field col s2">
+            <%= f.label :point, "Valor *" %>
+            <%= f.number_field :point %>
+        </div>
+        <div class="input-field col s8">
+            <%= f.label :description, "Descripción *" %>
+            <%= f.text_field :description, type: "text", class: "validate" %>
+        </div>
+        <div class="input-field col s2">
+            <%= f.hidden_field :_destroy %>
+            <%= link_to_remove_association button_tag(raw("<i class='material-icons'>close</i>"), type:'button', class: "btn-small red lighten-3 waves-effect"), f, { wrapper_class:'option_fields'} %>
+        </div>
+    </div>
+</div>

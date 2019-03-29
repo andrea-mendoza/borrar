@@ -1,0 +1,17 @@
+<table class="comment-show">
+    <tr class="comment-title">
+        <td colspan="2"><strong>Comentario <%= comment_counter+1 %></strong></td>
+    </tr>
+    <tr class="thin-row comment-info">
+        <th>Miembro tribunal: </th>
+        <td><%= comment.user.complete_name %></td>
+    </tr>
+    <tr class="comment-info">
+        <th>Comentario:</th>
+        <td><%= sanitize comment.commentary %></td>
+    </tr>
+    <tr class="thin-row comment-info">
+        <th>Fecha: </th>
+        <td><%= l(comment.created_at, format: "%b %d, %Y - %H:%M") %></td>
+    </tr>
+</table>

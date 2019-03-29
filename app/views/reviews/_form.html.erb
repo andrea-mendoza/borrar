@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col s12 m10 offset-m1">
+        <div class="card brown lighten-5">
+            <div class="card-content">
+                <h5 class="center-align"><%= @survey.name %></h5>
+                <%= form_for([@event, @paper, @review]) do |review_form| %>
+
+                    <%= review_form.hidden_field :user_id, value: current_user.id %>
+                    <%= review_form.hidden_field :survey_id, value: @survey.id %>
+                    <%= review_form.hidden_field :paper_id, value: @paper.id %>
+
+                    <% @survey.questions.each do |question| %>
+                        <% evaluation = @review.build_evaluation(question) %>
+                        <%= review_form.fields_for :evaluations, evaluation do |evaluation_form| %>
+                            <%= evaluation_form.hidden_field :question_id, value: question.id %>
+                            <div class="center-align"> * * * </div>
+                            <strong><%= question.title %> (*)</strong>
+                            <% if question.type == 'Questions::SelectOption' %>
+                                <div class="input-field col s12">
+                                    <% question.options.each do |option|%>
+                                        <p><label>
+                                            <% selected_option_value = evaluation_form.object.score %>
+                                            <%= evaluation_form.radio_button :score, option.value, checked: option.value == selected_option_value, required: true %>
+                                            <span id="miLabel"><%= option.show %></span>
+                                        </label></p>
+                                    <% end %>
+                                </div>
+                            <% elsif question.type == 'Questions::Text' %>
+                                <span id="miLabel">- <%= question.description %></span><br>
+                                <div class="input-field col s12">
+                                    <%= evaluation_form.text_area :description, class: 'quill_container', required: true %>
+                                </div>
+                            <% end %>
+                        <% end %>
+                    <% end %>
+                    <br>
+                    <div>
+                        <p class="required-alert">Los campos marcados con (*) son obligatorios.</p><br>
+                    </div>
+                    <div class="center-align">
+                        <%= review_form.button class: "btn-small waves-effect waves-light" do %>
+                            <% @review.new_record? ? 'Realizar revisión' : 'Editar revisión' %>
+                        <% end %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

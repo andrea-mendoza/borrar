@@ -1,0 +1,70 @@
+<h5 class="center-align"><strong>INFORME DE REVISIONES</strong></h5><br>
+<h5>Presentación</h5>
+<table>
+    <tr class="sr-pdf">
+        <th>Tema</th>
+        <td><%= @paper.title %></td>
+    </tr>
+    <tr class="sr-pdf">
+        <th>Estudiante</th>
+        <td><%= @paper.user.complete_name %></td>
+    </tr>
+</table><br>
+
+<h5>Resumen de revisiones y comentarios</h5>
+<table class="striped summary-pdf">
+    <thead>
+        <tr class="summary-header-pdf">
+            <th></th>
+            <th>Revisor</th>
+            <th>Fecha</th>
+            <% @survey.quantitative_questions.each do |question| %>
+                <th class="vertical-pdf"><div><%= question.title %></div></th>
+            <% end %>
+            <th class="vertical-pdf"><div>Nota final</div></th>
+        </tr>
+        <tr class="header-two-pdf">
+            <th></th>
+            <th></th>
+            <th></th>
+            <% @survey.quantitative_questions.each do |question| %>
+                <th class="wb-pdf">(<%= question.max_score.to_i %>)</th>
+            <% end %>
+            <th class="wb-pdf">(100)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @paper.reviews.each do |review| %>
+            <tr class="reviews-pdf">
+                <td><strong>Revisión <%= review.id %></strong></td>
+                <td><%= review.user.complete_name %></td>
+                <td><%= l(review.created_at, format: "%b %d") %></td>
+                <% review.quantitative_evaluations.each do |evaluation| %>
+                    <td><%= evaluation.score %></td>
+                <% end %>
+                <td><strong><%= review.final_score %></strong></td>
+            </tr>
+        <% end %> 
+    </tbody>
+</table><br>
+
+<% @reviews.each do |review| %>
+    <table class="review-show-pdf">
+        <tr class="paper-title-pdf thin-row-pdf">
+            <td colspan="2">
+                <strong>Revisión <%= review.id %> - <%= review.user.complete_name %></strong>
+            </td>
+        </tr>
+        <% review.qualitative_evaluations.each do |evaluation| %>
+            <tr>
+                <th><%= evaluation.question.title %></th>
+                <td><%= sanitize evaluation.description %></td>
+            </tr>
+        <% end %>
+        <tr class="thin-row-pdf">
+            <th>Fecha:</th>
+            <td><%= l(review.created_at, format: "%d %b, %Y - %H:%M") %></td>
+        </tr>
+    </table>
+    <br>
+<% end %>

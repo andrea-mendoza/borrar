@@ -1,0 +1,14 @@
+<h5>Presentación</h5>
+<div class="row flex">
+    <div class="col s2 fr"><strong>Documento:</strong></div>
+    <div class="col s10 fr"><%= paper.title %></div>
+    <div class="col s2 sr"><strong>Autor:</strong></div>
+    <div class="col s10 sr"><%= paper.user.complete_name %></div>
+    <div class="col s2 fr"><strong>Archivos:</strong></div>
+    <div class="col s10 fr">
+        <%= link_to rails_blob_path(paper.pdf_file, disposition: "inline"), 
+        class: "btn-flat pdf-sm", target: "_blank" do %>
+         <em class="material-icons tooltipped" data-position='right' data-tooltip='Descargar PDF'>picture_as_pdf</em>
+       <%end%>
+    </div>
+</div>

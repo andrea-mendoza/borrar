@@ -1,0 +1,50 @@
+<h3 class="center-align">Eventos</h3>
+
+<table>
+  <thead class="header-row">
+    <tr>
+      <th>Nombre</th>
+      <th>Carrera</th>
+      <th>Semestre</th>
+      <th>Año</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @events.each do |event| %>
+      <% if current_user.estudiante? %>
+        <tr>
+          <td><%= link_to event.name, event_papers_path(event), class: 'link-to-text' %></td>
+          <td><%= event.career %></td>
+          <td><%= event.semester %></td>
+          <td><%= event.year %></td>
+        </tr>
+      <% else %>
+        <tr>
+          <td><%= link_to event.name, event_papers_path(event), class: 'link-to-text' %></td>
+          <td><%= event.career %></td>
+          <td><%= event.semester %></td>
+          <td><%= event.year %></td>
+          <% if current_user.admin_role? || current_user.professor_role? %>
+            <td><%= link_to edit_event_path(event), class: 'waves-effect btn-floating btn-small grey' do %>
+              <em class="material-icons tooltipped" data-position='bottom' data-tooltip='Editar Evento'>edit</em>
+              <% end %>
+            </td>
+            <td>
+              <% if event.survey.present? %>
+                <%= link_to event_survey_path(event, event.survey), class: "waves-effect btn-floating btn-small grey" do %>
+                    <em class="material-icons tooltipped" data-position='bottom' data-tooltip='Ver Form. Revisión'>view_list</em>
+                <% end %>
+              <% else %>
+                <%= link_to new_event_survey_path(event), class: "waves-effect btn-floating btn-small grey" do %>
+                    <em class="material-icons tooltipped" data-position='bottom' data-tooltip='Crear Form. Revisión'>assignment</em>
+                <% end %>
+              <% end %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

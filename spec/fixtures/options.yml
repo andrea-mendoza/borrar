@@ -1,0 +1,24 @@
+one:
+  point: 3
+  description: Good
+  question: select_option_one
+
+two:
+  point: 2
+  description: Regular
+  question: select_option_one
+
+three:
+  point: 1
+  description: Bad
+  question: select_option_one
+
+four:
+  point: 3
+  description: Good
+  question: select_option_two
+
+five:
+  point: 2
+  description: Regular
+  question: select_option_two

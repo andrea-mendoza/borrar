@@ -1,0 +1,23 @@
+<div class="fixed-action-btn">
+  <a class="btn-floating btn-large blue darken-2">
+    <em class="large material-icons">menu</em>
+  </a>
+  <ul>
+    <li>
+        <%= link_to event_paper_comments_path(@event, @paper, :format => :pdf), class: "btn-floating grey", target: "_blank" do %>
+            <em class="material-icons tooltipped" data-position='left' data-tooltip='Generar informe'>file_download</em>
+        <% end %>
+    </li>
+    <li>
+        <%= link_to new_event_paper_review_path(@event, @paper), class: "btn-floating grey" do %>
+            <em class="material-icons tooltipped" data-position='left' data-tooltip='Registrar revisión'>add_box</em>
+        <% end %>
+    </li>
+  </ul>
+</div>
+<br>
+<%= render 'papers/submission', paper: @paper %>
+<%= render 'reviews/summary' %><br>
+<%= render @paper.reviews %>
+<%= render @paper.comments %><br>
+<%= render 'comments/form' %>

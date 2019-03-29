@@ -1,0 +1,9 @@
+<% if page.current? %>
+  <ul class="active">
+    <%= content_tag :a, page %>
+  </ul>
+<% else %>
+  <ul class="waves-effect">
+    <%= link_to page, url, :rel => 'next', :remote => remote %>
+  </ul>
+<% end %>

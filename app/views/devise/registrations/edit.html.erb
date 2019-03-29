@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col s12 m8 offset-m2">
+    <div class="card brown lighten-5">
+      <div class="card-content">
+        <h4 style="text-align:center">Modificar datos</h4>
+
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= devise_error_messages! %>
+
+          <div class="input-field">
+            <%= f.label :name, 'Nombre(s) *' %>
+            <%= f.text_field :name, type: "text", class: "validate" %>
+          </div>
+
+          <div class="input-field">
+            <%= f.label :lastname, 'Apellidos *' %>
+            <%= f.text_field :lastname, type: "text", class: "validate" %>
+          </div>
+
+          <div class="input-field">
+            <%= f.label :username, 'Nombre de usuario *' %>
+            <%= f.text_field :username, type: "text", class: "validate" %>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s6">
+              <%= f.label :ci, 'CI' %>
+              <%= f.number_field :ci, class: "validate" %>
+            </div>
+
+            <div class="input-field col s6">
+              <%= f.label :phone, 'Celular' %>
+              <%= f.number_field :phone, class: "validate" %>
+            </div>
+          </div>
+
+          <div class="input-field">
+            <%= f.label :email, 'Correo electrónico *' %>
+            <%= f.email_field :email, autocomplete: "email" %>
+          </div>
+          <div>
+              <p class="required-alert">Los campos marcados con * son obligatorios.</p><br>
+          </div>
+
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+          <% end %>
+
+          <br>
+          <div class="center-align">
+            <%= button_tag(class: 'btn-small waves-effect waves-light') do %>
+              Editar
+            <% end %>
+          </div>
+        <% end %>
+      
+      </div>
+    </div>
+  </div>
+</div>

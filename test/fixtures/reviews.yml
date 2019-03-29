@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  relevance: MyString
+  problem_def: MyString
+  general_def: MyString
+  specific_def: MyString
+  confidence: MyString
+  general_evaluation: MyText
+  personal_message: MyText
+  paper: one
+
+two:
+  relevance: MyString
+  problem_def: MyString
+  general_def: MyString
+  specific_def: MyString
+  confidence: MyString
+  general_evaluation: MyText
+  personal_message: MyText
+  paper: two

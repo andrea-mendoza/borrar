@@ -1,0 +1,22 @@
+<h3 align="center">Revisiones</h3>
+
+<%= link_to new_event_survey_path, class: "btn-small waves-effect right" do %>
+    <em class="material-icons left">add</em>Crear
+<% end %>
+    
+<table>
+    <thead>
+        <tr>
+            <th>Título</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @surveys.each do |survey| %>
+            <tr>
+                <td><%= survey.name %></td>
+                <td><%= link_to "Ver", event_survey_path(@event, survey) %></td>
+                <td><%= link_to "Editar", edit_event_survey_path(@event, survey) %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

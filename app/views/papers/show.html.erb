@@ -1,0 +1,109 @@
+<table class="striped paper-show">
+  <tr class="paper-title">
+    <td colspan="2"><strong>Documento <%= @paper.id %></strong></td>
+  </tr>
+  <tr>
+    <th><strong>Tipo de documento:</strong></th>
+    <td><%= @paper.doc_type %></td>
+  </tr>
+  <tr>
+    <th><strong>Título:</strong></th>
+    <td><%= @paper.title %></td>
+  </tr>
+  <tr>
+    <th><strong>Autor:</strong></th>
+    <td><%= @paper.user.name %> <%= @paper.user.lastname %></td>
+  </tr>
+  <tr>
+    <th><strong>Link Google Docs:</strong></th>
+    <td><a href="<%= @paper.google_docs_link %>" target="_blank" style="text-decoration: underline;"><%= @paper.google_docs_link %></a></td>
+  </tr>
+  <tr>
+    <th><strong>Documento:</strong></th>
+    <td>
+      <%= link_to rails_blob_path(@paper.pdf_file, disposition: "attachment"), 
+        class: "btn-flat pdf-sm" do %>
+         <em class="material-icons tooltipped" data-position='right' data-tooltip='Descargar PDF'>picture_as_pdf</em>
+       <%end%>
+    </td>
+  </tr>
+  <tr>
+    <th><strong>Introducción o Resumen:</strong></th>
+    <td><%= simple_format(@paper.resume) %></td>
+  </tr>
+  <tr>
+    <th><strong>Estado:</strong></th>
+    <td><%= @paper.status %></td>
+  </tr>
+  <tr>
+    <th><strong>Presentado:</strong></th>
+    <td><%= l(@paper.created_at, format: '%d %b, %Y - %H:%M') %></td>
+  </tr>
+  <tr>
+    <th><strong>Última actualización:</strong></th>
+    <td><%= l(@paper.updated_at, format: '%d %b, %Y - %H:%M') %></td>
+  </tr>
+</table>
+
+<br><br>
+
+<% if @assingment.present? %>
+  <table class="striped assign-table">
+    <thead class="header-row">
+      <tr class="paper-title trib">
+        <th colspan="4">Tribunal</th>
+      </tr>
+      <tr>
+        <th>Rol del miembro</th>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>Correo electrónico</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Director</td>
+        <td><%= User.find(@assingment.director_id).name %></td>
+        <td><%= User.find(@assingment.director_id).lastname %></td>
+        <td><%= User.find(@assingment.director_id).email %></td>
+      </tr>
+      <tr>
+        <td>Tutor</td>
+        <td><%= User.find(@assingment.tutor_id).name %></td>
+        <td><%= User.find(@assingment.tutor_id).lastname %></td>
+        <td><%= User.find(@assingment.tutor_id).email %></td>
+      </tr>
+      <tr>
+        <td>Relator</td>
+        <td><%= User.find(@assingment.relator_id).name %></td>
+        <td><%= User.find(@assingment.relator_id).lastname %></td>
+        <td><%= User.find(@assingment.relator_id).email %></td>
+      </tr>
+    </tbody>
+  </table>
+<% end %> <br>
+
+<% if @classroom.present? %>
+  <table class="striped assign-table">
+    <thead class="header-row">
+      <tr class="paper-title trib">
+        <th colspan="4">Aula para defensa</th>
+      </tr>
+      <tr>
+        <th>Nombre evento</th>
+        <th>Ambiente</th>
+        <th>Fecha</th>
+        <th>Hora</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @event.name %></td>
+        <td><%= @classroom.ambient %></td>
+        <td><%= l(@classroom.defense_date, format: "%d %b, %Y") %></td>
+        <td><%= @classroom.defense_hour.strftime("%I:%M %p") %></td>
+      </tr>
+    </tbody>
+  </table>
+<% end %>
+<br><br>

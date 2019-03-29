@@ -1,0 +1,28 @@
+<h3 class="align center">Usuarios</h3>
+<table>
+    <thead class="header-row">
+        <tr>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Correo electrónico</th>
+            <th>Rol</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @users.each do |user| %>
+            <tr>
+                <td><%= user.name %></td>
+                <td><%= user.lastname %></td>
+                <td><%= user.email %></td>
+                <td><%= user.role %></td>
+                <td><%= link_to edit_user_path(user), class: 'waves-effect btn-floating btn-small grey' do  %>
+                        <em class="material-icons tooltipped" data-position='right' data-tooltip='Editar usuario'>edit</em>
+                    <% end %>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<%= paginate @users %>

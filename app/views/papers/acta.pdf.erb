@@ -1,0 +1,45 @@
+<table>
+    <tr>
+        <td><%= wicked_pdf_image_tag "logo_ucb.jpg", width: "90", height: "140" %></td>
+        <td><div class="row centro"><strong>universidad  católica  boliviana  "san  pablo" <br>Carrera de <%= @event.career %></strong></div></td>
+    </tr>
+</table><br>
+
+<div class="defensa"><strong>Acta de <%= @event.name %></strong></div>
+
+<div class="parrafo">
+    <p>
+        En acto académico realizado en la ciudad de Cochabamba, en fecha <strong><%= l(@classroom.defense_date, :format => :long) %>,</strong> 
+        a horas <strong><%= @classroom.defense_hour.strftime("%k:%M") %>,</strong> se reunió el tribunal examinador del Trabajo de Grado del (de la) estudiante 
+        <strong><%= @paper.user.name %> <%= @paper.user.lastname %>,</strong> conformado por <strong><%= User.find(@assingment.tutor_id).professional_degree %> <%= User.find(@assingment.tutor_id).name %> <%= User.find(@assingment.tutor_id).lastname %></strong> como profesor(a) Guía, 
+        <strong><%= User.find(@assingment.relator_id).professional_degree %> <%= User.find(@assingment.relator_id).name %> <%= User.find(@assingment.relator_id).lastname %></strong> como profesor(a) Relator(a) y <strong><%= User.find(@assingment.director_id).professional_degree %> <%= User.find(@assingment.director_id).name %> <%= User.find(@assingment.director_id).lastname %></strong> como 
+        presidente del Tribunal. <br><br>
+        Luego de escuchar y evaluar el informe, que lleva por título: "<strong><%= @paper.title %></strong>" 
+        y está inscrito en la modalidad de <%=@paper.doc_type%> el tribunal decidió 
+        ________________ el trabajo y otorgar la calificación de ______ (________________________________). 
+        Asimismo, el tribunal consensuó las siguientes observaciones y recomendaciones, que deben ser 
+        atendidas para las fases siguientes del proceso de titulación: <br><br>
+        1. _________________________________________________________________________________________ <br>
+        2. _________________________________________________________________________________________ <br>
+        3. _________________________________________________________________________________________ <br>
+        4. _________________________________________________________________________________________ <br>
+        5. _________________________________________________________________________________________ <br>
+        6. _________________________________________________________________________________________ <br>
+        7. _________________________________________________________________________________________ <br>
+        8. _________________________________________________________________________________________ <br>
+    </p>
+    <br><br><br>
+    <table class="trib">
+        <tr>
+            <td>__________________________<br> Profesor(a) Guía</td>
+            <td>__________________________<br> Profesor(a) Relator</td>
+        </tr>
+        <tr class="firma">
+            <td>_______________________________<br> Presidente del Tribunal</td>
+            <td>__________________________<br> Docente de la Materia</td>
+        </tr>
+    </table>
+    <table class="est">
+        <tr><td>__________________________<br> Estudiante</td></tr>
+    </table>
+</div>

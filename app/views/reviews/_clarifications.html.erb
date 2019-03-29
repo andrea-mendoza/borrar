@@ -1,0 +1,20 @@
+<% @reviews.each do |review| %>
+    <table class="review-show">
+        <tr class="paper-title">
+            <td colspan="2">
+                <strong>Revisión <%= review.id %> - <%= review.user.complete_name %></strong>
+            </td>
+        </tr>
+        <% review.qualitative_evaluations.each do |evaluation| %>
+            <tr>
+                <th><%= evaluation.question.title %></th>
+                <td><%= sanitize evaluation.description %></td>
+            </tr>
+        <% end %>
+        <tr class="thin-row">
+            <th>Fecha:</th>
+            <td><%= l(review.created_at, format: "%b %d, %Y - %H:%M") %></td>
+        </tr>
+    </table>
+    <br>
+<% end %>

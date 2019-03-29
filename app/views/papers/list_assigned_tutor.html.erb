@@ -1,0 +1,50 @@
+<h3 align="center">Documentos</h3><br>
+
+<table>
+  <thead class="header-row">
+    <tr>
+      <th>No.</th>
+      <th>Título</th>
+      <th>Estudiante</th>
+      <th>Carrera</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @papers.each_with_index do |paper, index| %>
+        <% if paper.assingment.present? %>
+            <% if current_user.id == paper.assingment.tutor_id %>
+                <tr>
+                  <td><%= index+1 %></td>
+                  <td class="title-assigned"><%= link_to paper.title, event_paper_path(paper.event_id, paper), class: 'link-to-text' %></td>
+                  <td><%= paper.user.name %> <%= paper.user.lastname %></td>
+                  <td><%= paper.user.career %></td>
+                  <% if paper.reviews.find_by(paper_id: paper.id) %>
+                    <td>
+                      <%= link_to event_paper_reviews_path(paper.event_id, paper), class: "waves-effect btn-floating btn-small grey" do %>
+                        <em class="material-icons tooltipped" data-position='bottom' data-tooltip='Ver Revisiones'>search</em>
+                      <% end %>
+                    </td>
+                  <% end %>
+                  <% if paper.reviews.find_by(user_id: current_user.id) %>
+                    <td>
+                      <%= link_to edit_event_paper_review_path(paper.event_id, paper, paper.reviews.find_by(user_id: current_user.id)), class: "waves-effect btn-floating btn-small grey" do %>
+                        <em class="material-icons tooltipped" data-position='bottom' data-tooltip='Editar Revisión'>edit</em>
+                      <% end %>
+                    </td>
+                  <% else%>
+                    <td>
+                      <%= link_to new_event_paper_review_path(paper.event_id, paper), class: "waves-effect btn-floating btn-small grey" do %>
+                        <em class="material-icons tooltipped" data-position='bottom' data-tooltip='Realizar Revisión'>add_box</em>
+                      <% end %>
+                    </td>
+                  <%end%>
+                </tr>
+            <% end %>
+          <% end %>
+      <% end %>
+  </tbody>
+</table>
+
+<%= paginate @papers %>

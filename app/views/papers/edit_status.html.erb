@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col s10 m6 offset-m3">
+        <div class="card brown lighten-5">
+            <div class="card-content">
+                <h4 class="center-align">Cambiar estado</h4>
+                <%= form_for([@event, @paper]) do |f| %>
+                    <div class="row">
+                        <div class="input-field col s6 offset-m3">
+                            <%= f.label :status, 'Estado *' %><br>
+                            <%= f.select :status, ['revisado', 'aceptado','rechazado'] %>
+                        </div>
+                    </div>
+
+                    <div class="center-align">
+                        <%= button_tag(class: "btn-small waves-effect waves-light") do %>
+                            Cambiar
+                        <% end %>
+                        </div>
+                <% end %>
+            
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col s12 m8 offset-m2">
+    <div class="card brown lighten-5">
+      <div class="card-content">
+        <%= form_for([@event, @paper]) do |form| %>
+          <h4 align="center">Editar Registro Documento</h4><br>
+          <% if @paper.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(paper.errors.count, "error") %> prohibited this paper from being saved:</h2>
+
+              <ul>
+              <% paper.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="input-field col s12">
+            <%= form.label :doc_type, 'Tipo de documento *', class: 'active' %>
+            <%= form.select :doc_type, ['Proyecto de Grado','Tesis de Grado','Pasantía','Trabajo Dirigido'] %>
+          </div>
+          <div class="input-field col s12">
+            <%= form.label :title, 'Título *', class: "active" %>
+            <%= form.text_area :title, class: "materialize-textarea" %>
+          </div>
+          <div class="input-field col s12">
+            <%= form.label :google_docs_link, 'Link archivo Google Docs *' %>
+            <%= form.text_field :google_docs_link, class: 'validate' %>
+          </div>
+          <div class="file-field input-field col s12">
+            <div class="btn blue lighten-2">
+              <span><em class="material-icons white-text">picture_as_pdf</em></span>
+              <%= form.file_field :pdf_file, {accept: "application/pdf" } %>
+            </div>
+            <div class="file-path-wrapper">
+              <%= text_field_tag nil, (form.object.pdf_file.filename), {id: nil, class: 'file-path validate'} %>
+            </div>
+          </div>
+          <div class="input-field col s12">
+            <%= form.label :resume, 'Resumen o Introducción', class: "active" %>
+            <%= form.text_area :resume, :class => 'materialize-textarea' %>
+          </div><br>
+
+          <%= form.hidden_field :user_id, value: current_user.id %>
+
+          <div class="col s12">
+            <p class="required-alert">Los campos marcados con * son obligatorios.</p><br>
+          </div>
+
+          <div class="center-align">
+              <%= button_tag(class: "btn-small waves-effect waves-light") do %>
+                Editar
+              <% end %>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<div class="col s12 m8 offset-m2 l6 offset-l3">
+  <div class="card-panel grey lighten-5 z-depth-1">
+    <div class="row valign-wrapper">
+      <div id='survey' class="col s12">
+        <%= form_for([@event, @survey]) do |survey_form| %>
+          <div class="row">
+            <div class="col s12 m8 offset-m2">
+              <div class="z-depth-0 card-panel green lighten-5">
+                <div class="center-align">
+                  <em class="inline-icon tiny material-icons">info_outline</em> <span class="grey-text text-darken-3">La suma de los puntajes máximos debe ser 100</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+                <%= survey_form.label :name, 'Título *' %>
+                <%= survey_form.text_field :name, type: "text", class: "validate" %>
+            </div>
+          </div>
+          <%= survey_form.fields_for :questions do |question_form| %>
+            <%= render "question_fields", f: question_form %>
+          <% end %>
+
+          <div>
+            <% question_types_info.each do |display_name, type| %>
+              <%= link_to_add_association "Añadir sección #{display_name}", survey_form, :questions,
+                wrap_object: Proc.new { |question| quesion = question.becomes!(type); question } %> |
+            <% end %>
+          </div><br>
+          <div>
+            <p class="required-alert">Los campos marcados con * son obligatorios.</p>
+          </div>
+          <div class="center-align">
+            <%= link_to 'Crear Formulario', '#confirmation-modal', class: 'modal-trigger btn-small waves-effect waves-light' %>
+          </div>
+          <div id="confirmation-modal" class="modal">
+            <div class="modal-content">
+              <h4>Confirmación</h4>
+              <p>Una vez creado el formulario, los usuarios podrán registrar revisiones, debido a esto, este formulario no se podrá modificar.</p>
+              <p>¿Deseas guardar el formulario?</p>
+            </div>
+            <div class="modal-footer">
+              <%= link_to 'Cancelar', '#confirmation-modal', class: 'modal-close btn-small btn-flat' %>
+              <%= survey_form.submit 'Crear Formulario', class: 'text-white btn-small' %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

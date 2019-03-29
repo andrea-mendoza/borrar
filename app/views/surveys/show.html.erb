@@ -1,0 +1,38 @@
+<div class="col s12 m8 offset-m2 l6 offset-l3">
+  <div class="card-panel grey lighten-5 z-depth-1">
+    <div class="row valign-wrapper">
+      <div id='survey' class="col s12">
+        <div class="row">
+            <h5 class="center-align"><%= @survey.name %></h3>
+        </div>
+        <div class="row">
+            <div class="col s12 m10 offset-m1">
+                <% @survey.questions.each do |question| %>
+                    <div class="center-align"> * * * </div>
+                    <div class="section">
+                        <strong><%= question.title %></strong>
+                        <% if question.type == 'Questions::SelectOption' %>
+                            <% question.options.each do |option|%>
+                                <p><label>
+                                    <%= radio_button_tag :score, option.value, false, disabled: true %>
+                                    <span><%= option.show %></span>
+                                </label></p>
+                            <% end %>
+                        <% elsif question.type == 'Questions::Text' %>
+                            <p><%= question.description %></p>
+                        <% end %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+        <% if @survey.safe_to_remove? %> 
+            <div class="row">
+                <div class="col s3 push-s9">
+                    <%= link_to raw("<i class='material-icons left'>delete</i>" + 'Eliminar'), event_survey_path(@survey), { method: :delete, data: { confirm: '¿Estás seguro?' }, class: 'red-text'} %>
+                </div>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

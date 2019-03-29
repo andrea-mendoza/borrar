@@ -1,0 +1,13 @@
+<% if current_user && current_user.estudiante? %>
+    <%= render 'layouts/student' %><br>
+<% end %>
+
+<% if current_user && current_user.professor_role? %>
+  <%= render 'layouts/director_professor' %><br>
+<% elsif current_user && current_user.admin_role? %>
+  <%= render 'layouts/professor_admin' %><br>
+<% elsif current_user && current_user.docente? %>
+  <%= render 'layouts/professor' %><br>
+<% elsif current_user && current_user.director? %>
+  <%= render 'layouts/director' %><br>
+<% end %>

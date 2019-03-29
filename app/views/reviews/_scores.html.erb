@@ -1,0 +1,53 @@
+<h5>Resumen de revisiones y comentarios</h5>
+<table class="striped summary">
+    <thead>
+        <tr class="summary-header">
+            <th></th>
+            <th>Revisor</th>
+            <th>Fecha</th>
+            <% @survey.quantitative_questions.each do |question| %>
+                <th class="vertical"><div><%= truncate(question.title, length: 30) %></div></th>
+            <% end %>
+            <th class="vertical"><div>Nota final</div></th>
+            <th></th>
+        </tr>
+        <tr class="header-two">
+            <th></th>
+            <th></th>
+            <th></th>
+            <% @survey.quantitative_questions.each do |question| %>
+                <th class="wb">(<%= question.max_score.to_i %>)</th>
+            <% end %>
+            <th class="wb">(100)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @paper.reviews.each do |review| %>
+            <tr class="reviews">
+                <td><strong>Revisión <%= review.id %></strong></td>
+                <td><%= review.user.complete_name %></td>
+                <td><%= l(review.created_at, format: "%b %d") %></td>
+                <% review.quantitative_evaluations.each do |evaluation| %>
+                    <td><%= evaluation.score %></td>
+                <% end %>
+                <td><strong><%= review.final_score %></strong></td>
+                <td width="4%">
+                    <% if review.user_id==current_user.id %>
+                        <%= link_to edit_event_paper_review_path(@event, @paper, review), class: "btn-flat edit-sm" do %>
+                            <em class="material-icons tooltipped" data-position='right' data-tooltip='Editar revisión'>edit</em>
+                        <% end %>
+                    <% end %>
+                </td>
+            </tr>
+        <% end %>
+        <% @paper.comments.each_with_index do |comment, index| %>
+            <tr class="comments">
+                <td>Comentario <%= index+1 %></td>
+                <td><%= comment.user.complete_name %></td>
+                <td><%= l(comment.created_at, format: "%b %d") %></td>
+                <td colspan="8"></td>
+            </tr>
+        <% end %>    
+    </tbody>
+</table>

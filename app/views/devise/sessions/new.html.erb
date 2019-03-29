@@ -1,0 +1,40 @@
+<br><br><br>
+<div class="row">
+  <div class="col s6 offset-s3">
+    <div class="card brown lighten-5">
+      <div class="card-content">
+        <h3 class="center-align">Iniciar Sesión</h3><br>
+
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="input-field">
+            <em class="material-icons prefix">assignment_ind</em>
+            <%= f.label :login, 'Nombre de usuario o e-mail' %>
+            <%= f.text_field :login, autofocus: true, class: "validate" %>
+          </div>
+
+          <div class="input-field">
+            <em class="material-icons prefix">lock</em>
+            <%= f.label :password, 'Contraseña' %>
+            <%= f.password_field :password, autocomplete: "current-password", class: "validate" %>
+          </div>
+
+          <% if devise_mapping.rememberable? -%>
+              <label>
+                <%= f.check_box :remember_me %>
+                <span>Recordarme</span>
+              </label><br><br>
+              <!--%= f.label "Recordarme", for:"remember_me" %-->
+          <% end -%>
+
+          <div class="actions">
+            <%= button_tag(class: 'btn-small waves-effect waves-light') do %>
+              Ingresar
+            <% end %>
+          </div>
+        <% end %><br>
+
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>

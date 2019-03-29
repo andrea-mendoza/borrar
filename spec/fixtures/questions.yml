@@ -1,0 +1,24 @@
+text_one:
+  title: Introduction
+  type: Questions::Text
+  description: This section should be short
+  survey: one
+
+select_option_one:
+  title: Antecedents
+  type: Questions::SelectOption
+  max_score: 30
+  survey: one
+
+select_option_two:
+  title: Problem
+  type: Questions::SelectOption
+  max_score: 70
+  survey: one
+
+# This record is invalid because it has no options
+invalid_select_option:
+  title: Antecedents
+  type: Questions::SelectOption
+  max_score: 40
+  survey: two

@@ -1,0 +1,79 @@
+<table>
+  <thead class="header-row">
+    <tr>
+      <th>No.</th>
+      <th>Título</th>
+      <th>Estudiante</th>
+      <th colspan="6"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <% @papers.each_with_index do |paper, index| %>
+        <tr>
+          <td><%= index+1 %></td>
+          <td><%= link_to paper.title, event_paper_path(@event, paper), class: 'link-to-text' %></td>
+          <td><%= paper.user.name %> <%= paper.user.lastname %></td>
+          <% if paper.classroom.present? && paper.assingment.present? %>
+            <td>
+                <%= link_to event_paper_path(@event, paper, :format => :pdf), class: "btn-small btn-floating grey", target: "_blank" do %>
+                    em> class="material-icons tooltipped" data-position='bottom' data-tooltip='Generar Acta'>insert_drive_file</em>
+                <% end %>
+            </td>
+          <% end %>
+          <td>
+            <%= link_to '/events/'+ @event.id.to_s + '/papers/'+ paper.id.to_s + '/edit_status', 
+                class: 'waves-effect btn-floating btn-small grey' do %>
+                    <em class="material-icons tooltipped" data-position='bottom' data-tooltip='Cambiar Estado'>swap_horiz</em>
+            <%end%>
+          </td>
+          <% if @event.survey.present? && paper.assingment.present? %>
+            <% if paper.reviews.find_by(paper_id: paper.id) %>
+                <td>
+                    <%= link_to event_paper_reviews_path(@event, paper), class: "waves-effect btn-floating btn-small grey" do %>
+                        <em class="material-icons tooltipped" data-position='bottom' data-tooltip='Ver Revisiones'>search</em>
+                    <% end %>
+                </td>
+            <% end %>
+            <% if paper.reviews.find_by(user_id: current_user.id) %>
+                <td>
+                    <%= link_to edit_event_paper_review_path(@event, paper, paper.reviews.find_by(user_id: current_user.id)), class: "waves-effect btn-floating btn-small grey" do %>
+                        <em class="material-icons tooltipped" data-position='bottom' data-tooltip='Editar Revisión'>edit</em>
+                    <% end %>
+                </td>
+            <% else%>
+                <td>
+                    <%= link_to new_event_paper_review_path(@event, paper), class: "waves-effect btn-floating btn-small grey" do %>
+                        <em class="material-icons tooltipped" data-position='bottom' data-tooltip='Realizar Revisión'>add_box</em>
+                    <% end %>
+                </td>
+            <%end%>
+          <% end %>
+          <td>
+                <% if paper.assingment.present? %>
+                    <%= link_to edit_event_paper_assingment_path(@event, paper, paper.assingment), class: "waves-effect btn-floating btn-small grey" do %>
+                        <em class="material-icons tooltipped" data-position='bottom' data-tooltip='Editar Tribunal'>group</em>
+                    <% end %>
+                <% else %>
+                    <%= link_to new_event_paper_assingment_path(@event, paper), class: "waves-effect btn-floating btn-small grey" do %>
+                        <em class="material-icons tooltipped" data-position='bottom' data-tooltip='Asignar Tribunal'>group_add</em>
+                    <% end %>
+                <% end %>
+          </td>
+          <td>
+            <% if paper.classroom.present? %>
+                <%= link_to edit_event_paper_classroom_path(@event, paper, paper.classroom), class: "waves-effect btn-floating btn-small grey" do %>
+                    <em class="material-icons tooltipped" data-position='bottom' data-tooltip='Editar Aula'>event_available</em>
+                <% end %>
+            <% else %>
+                <%= link_to new_event_paper_classroom_path(@event, paper, paper.classroom), class: "waves-effect btn-floating btn-small grey" do %>
+                    <em class="material-icons tooltipped" data-position='bottom' data-tooltip='Asignar Aula'>event</em>
+                <% end %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+  </tbody>
+</table>
+
+<%= paginate @papers %>

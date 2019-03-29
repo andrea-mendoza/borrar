@@ -1,0 +1,74 @@
+@import 'materialize';
+
+th.vertical-pdf div {
+    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    margin-left: -10em;
+    margin-right: -10em;
+  }
+  
+  th.vertical-pdf {
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    width: 3em;
+  }
+
+.paper-title-pdf td { text-align: center; }
+.paper-title-pdf th { text-align: center; }
+
+.review-show-pdf th { width: 35%; }
+.review-show-pdf tr { background-color: #E6EDFA; }
+.review-show-pdf tr:nth-child(odd) { background-color: #DDE4F3 !important; }
+.review-show-pdf tr:first-child { 
+  background-color: #E4E3E2 !important;
+  line-height: 0;
+}
+
+.summary-pdf, .review-show-pdf { border-collapse: collapse; }
+.summary-pdf tr, .review-show-pdf tr { border: none; }
+.summary-pdf th, .summary-pdf td, .review-show-pdf th, .review-show-pdf td {
+  border-right: solid 1px rgb(196, 191, 191); 
+  border-left: solid 1px rgb(196, 191, 191);
+}
+
+
+thead tr.summary-header-pdf { 
+  background-color: rgb(233, 231, 231); 
+  height: 260px;
+}
+tbody tr.reviews-pdf { background-color: #E3EDE4; }
+tbody tr.reviews-pdf:nth-child(odd) { background-color: #EBF7EB !important; }
+tbody tr.comments-pdf { background-color: #F5F8C1; }
+tbody tr.comments-pdf:nth-child(odd) { background-color: #F7FCDE !important;}
+
+tr.reviews-pdf td, tr.comments-pdf, tr.thin-row-pdf { line-height: 0;}
+
+.review-show-pdf td { padding-left: 10px;}
+
+.review-show-pdf ul:not(.browser-default) {
+    padding-left: 30px;
+}
+.review-show-pdf ul:not(.browser-default) li {
+    list-style-type: initial;
+}
+
+.review-show-pdf ol { padding-left: 30px; }
+.review-show-pdf { page-break-inside: avoid;}
+.reviews-pdf td { padding-left: 10px; }
+.review-show-pdf th { padding-left: 10px; }
+
+.fr-pdf { background-color: #ebebeb; }
+.sr-pdf { background-color: #F5F5F3; }
+
+.wb-pdf {
+  border-top: solid 1px rgb(196, 191, 191);
+}
+
+tr.header-two-pdf {
+  background-color: rgb(233, 231, 231); 
+  line-height: 2px;
+}

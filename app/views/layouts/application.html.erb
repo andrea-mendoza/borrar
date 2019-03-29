@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sistema de Revisión y Evaluación de Documentos</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application' %>
+    <%= javascript_include_tag 'application' %>
+    <%= favicon_link_tag asset_path('doc-reviewer.png'), :rel=>'icon', :type=>'image/png' %>
+  </head>
+
+  <body>
+    <%= render 'layouts/header' %>
+    <div class="container">
+    <% unless flash.empty? %>
+     <script type="text/javascript">
+        <% flash.each do |f| %>
+	        <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
+	     	  toastr['<%= type %>']('<%= f[1] %>');
+	      <% end %>
+     </script>
+    <% end %>
+    <%= yield %>
+    </div>
+  </body>
+</html>

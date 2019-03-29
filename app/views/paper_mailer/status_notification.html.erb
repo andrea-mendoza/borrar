@@ -1,0 +1,41 @@
+<!DOCTYPE  html>
+<html>
+  <head>
+    <title>Status notification</title>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+    <style type="text/css" media="screen">
+      .mensaje {text-align: justify; }
+      .titulo { text-transform: uppercase; }
+      .confidencialidad {
+        text-transform: uppercase;
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Cambio de estado</h1>
+
+    <p>Hola <%= @paper.user.complete_name %> , </p>
+
+    <p class="mensaje">
+      El documento con título <br>
+      <strong class="titulo"> <%= @paper.title %> </strong><br>
+      fue cambiado de estado a "<strong><%= @paper.status %></strong>". <br><br>
+
+      Por favor revise estos cambios en el sistema. <br><br>
+
+      Sistema de Revisión y Evaluación de Documentos Académicos.
+      <%= link_to 'Haga clic aquí', event_papers_url(@event) %> <br><br>
+
+      <%= image_tag(attachments['ucb_valores.png'].url, :size=>"200x80") %> <br><br>
+
+      <strong class="confidencialidad">nota</strong><br><br>
+      Si usted recibió el mensaje por error, por favor contáctese con la persona que se lo envió.
+      O aproxímese por las instalaciones de la Universidad Católica Boliviana "San Pablo" Unidad Académica Cochabamba. <br>
+      Calle M. Marquez esquina Parque Jorge Trigo Andia <br>
+      Cochabamba - Campus Tupuraya
+    </p>
+
+  </body>
+</html>
+

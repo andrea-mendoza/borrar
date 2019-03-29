@@ -1,0 +1,211 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require material_icons
+ *= require toastr
+ *= require quill.snow
+ *= require_tree .
+ *= require_self
+ */
+
+ @import "trix";
+ @import "materialize";
+ @import "materialize/extras/nouislider";
+
+ .c-form { background-color: #e4e1d3; }
+ .card-content span { color: grey; }
+ .divider { background-color: grey; }
+
+[type="radio"]:checked + span:after, 
+[type="radio"].with-gap:checked + span:before,
+[type="radio"].with-gap:checked + span:after {
+  border: 2px solid #1976d2;
+}
+
+[type="radio"]:checked + span:after, 
+[type="radio"].with-gap:checked + span:after {
+  background-color: #1976d2;
+}
+
+th.vertical div {
+  transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  margin-left: -10em;
+  margin-right: -10em;
+}
+
+th.vertical {
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  width: 3em;
+}
+
+.summary, .paper-show, .review-show, .review-edited, .assign-table, .comment-show { border-collapse: collapse; }
+.summary tr, .paper-show tr, .review-show tr, .review-edited tr, .assign-table tr, .comment-show tr { border: none; }
+.summary th, .summary td, .paper-show th, .paper-show td, .review-show th, .review-show td, 
+.review-edited th, .review-edited td, .assign-table th, .assign-table td,
+.comment-show th, .comment-show td {
+  border-right: solid 1px rgb(196, 191, 191); 
+  border-left: solid 1px rgb(196, 191, 191);
+}
+.review-edited, .paper-show, .assign-table, .trib th { border-bottom: solid 1px rgb(196, 191, 191); }
+
+thead tr.summary-header { 
+  background-color: rgb(233, 231, 231); 
+  height: 250px;
+}
+
+tr.header-two {
+  background-color: rgb(233, 231, 231); 
+  line-height: 2px;
+}
+
+.wb {
+  border-top: solid 1px rgb(196, 191, 191);
+}
+
+tbody tr.reviews { background-color: #E3EDE4; }
+tbody tr.reviews:nth-child(odd) { background-color: #EBF7EB !important; }
+tbody tr.comments { background-color: #F5F8C1; }
+tbody tr.comments:nth-child(odd) { background-color: #F7FCDE !important;}
+
+tr.reviews td, tr.comments, tr.review_edited, tr.thin-row { line-height: 0;}
+
+tbody tr.review_edited { background-color: white; }
+
+.head-rev { background-color: #E4E3E2; }
+.fir-rw { background-color: #E6EDFA; }
+.sec-rw { background-color: #DDE4F3; }
+
+.fr { background-color: #ebebeb; }
+.sr { background-color: #F5F5F3; }
+
+.pdf-sm {
+  height: 24px;
+  line-height: 24px;
+  padding: 0 0.5rem;
+}
+
+.paper-show th { width: 30%; }
+.paper-show tr { background-color: #F3FEFF; }
+.paper-show tr:nth-child(odd) { background-color: #DFF8F5 !important; }
+.paper-show tr:first-child { background-color: #E4E3E2 !important; }
+
+.paper-title td { text-align: center; }
+.paper-title th { text-align: center; }
+.comment-title { 
+  th { text-align: center; }
+  td { text-align: center; }
+  background-color: #a5d6a7;
+  line-height: 0; 
+}
+.comment-show th { width: 17%; }
+.comment-info { background-color: #e8f5e9; }
+
+.review-show th { width: 35%; }
+.review-show tr { background-color: #E6EDFA; }
+.review-show tr:nth-child(odd) { background-color: #DDE4F3 !important; }
+.review-show tr:first-child { 
+  background-color: #E4E3E2 !important;
+  line-height: 0;
+}
+
+.review-edited th { width: 35%; }
+.review-edited tr { background-color: white; }
+.review-edited tr:first-child { 
+  background-color: #E4E3E2 !important; 
+  line-height: 0;
+}
+
+.edit-sm {
+  height: 0px;
+  line-height: 0px;
+}
+
+#new_paper .error, .edit_paper .error,
+.new_comment .error, #event_form .error,
+#new_user .error, .edit_user .error, #new_survey .error,
+#new_assingment .error, .edit_assingment .error,
+#new_classroom .error, .edit_classroom .error {
+  color: rgb(204, 21, 21);
+}
+
+.link-to-text {
+  color: #1976d2;
+  text-decoration: underline;
+}
+.link-to-text:hover { color: tomato; }
+
+.title-row { width: 80%; }
+.title-assigned { width: 50%; }
+.header-row { background: rgb(235, 233, 233);  }
+tr { border: 0!important; }
+
+.datepicker-date-display .date-text { color: white; }
+.datepicker-cancel { color:rgb(226, 66, 66) !important; }
+
+.timepicker-display-column .timepicker-span-hours, .timepicker-span-minutes { color: white !important; }
+
+
+.trix-editor ul:not(.browser-default)>li {
+  list-style-type: disc;
+  display: list-item;
+}
+
+.trix-editor ul:not(.browser-default) {
+  list-style-type: disc;
+  display: block;
+  padding-left: 40px;
+}
+
+.review-show ul:not(.browser-default) { padding-left: 30px; }
+.review-show ul:not(.browser-default) li { list-style-type: initial; }
+.comment-show ul:not(.browser-default) { padding-left: 30px; }
+.comment-show ul:not(.browser-default) li { list-style-type: initial; }
+
+.material-tooltip {
+  font-size: 11px;
+  background-color: #FACA32;
+  color: #000;
+}
+
+.pagination li.active  a {
+  background-color: #FACA32;
+}
+
+.nav-cato {
+  background-color: #27649B;
+}
+
+::placeholder {
+  color: rgb(173, 171, 171);
+}
+
+.inline-icon {
+  vertical-align: bottom;
+  font-size: 20px !important;
+}
+
+.input-field label {
+  color: rgb(99, 93, 93);
+}
+
+.required-alert {
+  font-size: 9pt;
+  color: rgb(99, 93, 93);
+}
+
+#miLabel { color: rgb(99, 93, 93); }

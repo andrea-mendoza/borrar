@@ -1,0 +1,22 @@
+<div class='row'>
+    <% if current_user.director? %>
+        <div class="fixed-action-btn">
+            <a class="btn-floating btn-large blue darken-2">
+                <em class="large material-icons">menu</em>
+            </a>
+            <ul>
+                <li>
+                    <%= link_to event_paper_reviews_path(@event, @paper, :format => :pdf), class: "btn-floating grey", target: "_blank" do %>
+                        <em class="material-icons tooltipped" data-position='left' data-tooltip='Exportar Informe'>file_download</em>
+                    <% end %>
+                </li>
+            </ul>
+        </div>
+    <% end %>
+    <br>
+    <%= render 'papers/submission', paper: @paper %>
+    <%= render 'reviews/scores' %><br>
+    <%= render 'reviews/clarifications' %><br>
+    <%= render @paper.comments %><br>
+    <%= render 'comments/form' %>
+</div>

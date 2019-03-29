@@ -1,0 +1,29 @@
+<h3 align="center">Mis Documentos</h3><br>
+
+<table>
+  <thead class="header-row">
+    <tr>
+      <th>No.</th>
+      <th>Título</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @papers.each_with_index do |paper, index| %>
+        <tr>
+          <td><%= index+1 %></td>
+          <td class="title-row"><%= link_to paper.title, event_paper_path(paper.event_id, paper), class: 'link-to-text' %></td>
+          <td>
+            <%= link_to rails_blob_path(paper.pdf_file, disposition: "inline"), 
+                class: "waves-effect btn-floating btn-small grey", target: "_blank" do %>
+                <em class="material-icons">visibility</em>
+            <%end%>
+          </td>
+          <td><%= link_to edit_event_paper_path(paper.event_id, paper), class: 'waves-effect btn-floating btn-small grey' do %>
+            <em class="material-icons">edit</em>
+            <% end %>
+          </td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>

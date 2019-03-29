@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col s12 m8 offset-m2">
+    <div class="card-panel brown lighten-5">
+      <div class="row valign-wrapper">
+        <div class="col s12">
+          <h4 align="center">
+            <em class="material-icons prefix">note_add</em>
+            Nuevo Documento
+          </h4><br>
+
+
+          <%= form_for([@event, @paper]) do |form| %>
+            <div class="input-field col s12">
+              <%= form.label :doc_type, 'Tipo de documento *', class: 'active' %>
+              <%= form.select :doc_type, ['Proyecto de Grado','Tesis de Grado','Pasantía','Trabajo Dirigido'], include_blank: 'Elija su tipo de documento' %>
+            </div>
+            <div class="input-field col s12">
+              <%= form.label :title, 'Título *' %>
+              <%= form.text_area :title, class: "materialize-textarea" %>
+            </div>
+            <div class="input-field col s12">
+              <%= form.label :google_docs_link, 'Link archivo Google Docs *' %>
+              <%= form.text_field :google_docs_link, class: 'validate' %>
+            </div>
+            <div class="file-field input-field col s12">
+              <div class="btn blue lighten-2">
+                <span><em class="material-icons">picture_as_pdf</em></span>
+                <%= form.file_field :pdf_file, {accept: "application/pdf" } %>
+              </div>
+              <div class="file-path-wrapper">
+                <input type="text" class="file-path validate" placeholder="Elija un archivo *">
+              </div>
+            </div>
+            <div class="input-field col s12">
+              <%= form.label :resume, 'Resumen o Introducción' %>
+              <%= form.text_area :resume, :class => 'materialize-textarea' %>
+            </div><br>
+
+            <%= form.hidden_field :user_id, value: current_user.id %>
+
+            <div class="col s12">
+              <p class="required-alert">Los campos marcados con * son obligatorios.</p><br>
+            </div>
+
+            <% if Date.today <= @event.limit_date %>
+              <div class="center-align">
+                <%= button_tag(class: "btn-small waves-effect waves-light") do %>
+                  Registrar
+                <% end %>
+              </div>
+            <%end%>  
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<br><br><br>
