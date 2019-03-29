@@ -1,4 +1,4 @@
-# README
+# README [![Build Status](https://travis-ci.com/andrea-mendoza/doc-rev-v2.svg?branch=master)](https://travis-ci.com/andrea-mendoza/doc-rev-v2)
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
