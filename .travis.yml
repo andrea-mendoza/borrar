@@ -9,7 +9,8 @@ before_script:
   - psql -c "CREATE USER doc_reviewer WITH PASSWORD 'secreto';" -U postgres
 
 script:
-  - bin/rake db:migrate RAILS_ENV=test
+  # - bin/rake db:migrate RAILS_ENV=test
+  - bin/rake db:migrate
   - bin/rake db:seed
   - bundle exec rspec
 
