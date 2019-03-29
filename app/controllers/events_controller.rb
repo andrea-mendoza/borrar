@@ -8,21 +8,20 @@ class EventsController < ApplicationController
     @events = Event.where(:career => current_user.career)
   end
 
- 
-  def show
-     # GET /events/1
-    # GET /events/1.json
-  end
+  # GET /events/1
+  # GET /events/1.json
+  # Method Show without implementation.
+  # Implement Show Method
+
 
   # GET /events/new
   def new
     @event = Event.new
   end
 
- 
-  def edit
-     # GET /events/1/edit
-  end
+  # GET /events/1/edit
+  # Method Edit without implementation
+  # Implement Edit method
 
   # POST /events
   # POST /events.json
