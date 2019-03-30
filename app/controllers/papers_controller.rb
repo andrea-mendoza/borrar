@@ -56,8 +56,7 @@ class PapersController < ApplicationController
   end
 
   def edit_status
-    @event = Event.find(params[:event_id])
-    @paper = @event.papers.find(params[:id])
+    edit()
   end
 
   def update_status

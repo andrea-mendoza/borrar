@@ -32,7 +32,7 @@
                     <td><%= evaluation.score %></td>
                 <% end %>
                 <td><strong><%= review.final_score %></strong></td>
-                <td width="4%">
+                <td class = "width:4%">
                     <% if review.user_id==current_user.id %>
                         <%= link_to edit_event_paper_review_path(@event, @paper, review), class: "btn-flat edit-sm" do %>
                             <em class="material-icons tooltipped" data-position='right' data-tooltip='Editar revisión'>edit</em>

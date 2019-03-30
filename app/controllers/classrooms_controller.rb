@@ -34,9 +34,7 @@ class ClassroomsController < ApplicationController
     end
 
     def show
-        @event = Event.find(params[:event_id])
-        @paper = @event.papers.find(params[:paper_id])
-        @classroom =  Classroom.find(params[:id])
+        edit()
     end
 
     private

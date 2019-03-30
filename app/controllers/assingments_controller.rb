@@ -47,9 +47,7 @@ class AssingmentsController < ApplicationController
     end
 
     def show
-        @event = Event.find(params[:event_id])
-        @paper = @event.papers.find(params[:paper_id])
-        @assingment = Assingment.find(params[:id])
+        edit()
     end
 
     private

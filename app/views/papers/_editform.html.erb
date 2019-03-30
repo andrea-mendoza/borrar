@@ -3,7 +3,7 @@
     <div class="card brown lighten-5">
       <div class="card-content">
         <%= form_for([@event, @paper]) do |form| %>
-          <h4 align="center">Editar Registro Documento</h4><br>
+          <h4 class="align center">Editar Registro Documento</h4><br>
           <% if @paper.errors.any? %>
             <div id="error_explanation">
               <h2><%= pluralize(paper.errors.count, "error") %> prohibited this paper from being saved:</h2>

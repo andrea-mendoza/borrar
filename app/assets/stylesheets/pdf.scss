@@ -18,9 +18,10 @@ th.vertical-pdf div {
   }
 
 .paper-title-pdf td { text-align: center; }
-.paper-title-pdf th { text-align: center; }
-
-.review-show-pdf th { width: 35%; }
+.paper-title-pdf th { 
+  text-align: center;
+  padding-left: 10px;
+  width: 35%; }
 .review-show-pdf tr { background-color: #E6EDFA; }
 .review-show-pdf tr:nth-child(odd) { background-color: #DDE4F3 !important; }
 .review-show-pdf tr:first-child { 
@@ -59,7 +60,6 @@ tr.reviews-pdf td, tr.comments-pdf, tr.thin-row-pdf { line-height: 0;}
 .review-show-pdf ol { padding-left: 30px; }
 .review-show-pdf { page-break-inside: avoid;}
 .reviews-pdf td { padding-left: 10px; }
-.review-show-pdf th { padding-left: 10px; }
 
 .fr-pdf { background-color: #ebebeb; }
 .sr-pdf { background-color: #F5F5F3; }
