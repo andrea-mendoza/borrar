@@ -70,11 +70,11 @@ class UsersController < ApplicationController
       redirect_to change_path, alert: 'No se puede usar la misma contraseña.'
     else
       current_user.password = params[:user][:password]
-      saveCurrentUser
+      save_current_user
     end
   end
 
-  def saveCurrentUser
+  def save_current_user
     if current_user.save
       flash[:alert] = "Se cambio la contraseña correctamente."
       sign_in @user, :bypass => true
