@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   load_and_authorize_resource
   before_action :authorize_admin, only: [:create, :update]
 
-  def index
+  def indexgit 
     @users = User.where(:career => current_user.career).page(params[:page])
   end
 

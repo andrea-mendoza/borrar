@@ -42,7 +42,6 @@ th.vertical div {
   -moz-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
   -o-transform: rotate(-90deg);
-  transform: rotate(-90deg);
   margin-left: -10em;
   margin-right: -10em;
 }
@@ -161,12 +160,12 @@ tr { border: 0!important; }
 .timepicker-display-column .timepicker-span-hours, .timepicker-span-minutes { color: white !important; }
 
 
-trix-editor ul:not(.browser-default)>li {
+.trix-editor ul:not(.browser-default)>li {
   list-style-type: disc;
   display: list-item;
 }
 
-trix-editor ul:not(.browser-default) {
+.trix-editor ul:not(.browser-default) {
   list-style-type: disc;
   display: block;
   padding-left: 40px;

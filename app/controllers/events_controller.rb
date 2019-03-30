@@ -14,6 +14,7 @@ class EventsController < ApplicationController
   # Implement Show Method
 
 
+
   # GET /events/new
   def new
     @event = Event.new
@@ -22,6 +23,7 @@ class EventsController < ApplicationController
   # GET /events/1/edit
   # Method Edit without implementation
   # Implement Edit method
+
 
   # POST /events
   # POST /events.json
